@@ -11,10 +11,16 @@ class SearchBar extends React.Component {
     this.setState({ term: e.target.value });
   };
 
+  //function to control what happens when form submits
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.onTermSubmit(this.state.term);
+  };
+
   render() {
     return (
       <div>
-        <form className="ui form container">
+        <form onSubmit={this.onFormSubmit} className="ui form container">
           <h4>Search YouTube</h4>
           <div className="ui action input">
             {/* make input controllable using value, state and onChange event handling */}
