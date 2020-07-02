@@ -4,9 +4,14 @@ import youtube from "../api/youtube";
 const KEY = "AIzaSyDCK8UiqK-3eXB6krQhwrmEolljdLn4ti0";
 
 class App extends React.Component {
+  //initialize state to store response
+  state = {
+    videos: []
+  }
+
   //define search function to be sent as prop into SearchBar component
-  onTermSubmit = (term) => {
-    youtube.get("/search", {
+  onTermSubmit = async (term) => {
+    const response = await youtube.get("/search", {
       params: {
         part: "snippet",
         maxResults: 5,
@@ -15,7 +20,11 @@ class App extends React.Component {
         q: term,
       },
     });
+
+    this.setState({videos = response.data.item});
   };
+
+  
 
   render() {
     return (
