@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import youtube from "../api/youtube";
+import VideoList from "../components/VideoList";
 const KEY = "AIzaSyDCK8UiqK-3eXB6krQhwrmEolljdLn4ti0";
 
 class App extends React.Component {
