@@ -12,6 +12,10 @@ class App extends React.Component {
     clickedVideo: null,
   };
 
+  componentDidMount() {
+    this.onTermSubmit("web development");
+  }
+
   //define search function to be sent as prop into SearchBar component
   onTermSubmit = async (term) => {
     const response = await youtube.get("/search", {
@@ -24,7 +28,10 @@ class App extends React.Component {
       },
     });
 
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      clickedVideo: response.data.items[0],
+    });
   };
 
   //define function to update state with clicked video. To be sent as prop to VideoList component.
