@@ -37,11 +37,11 @@ class App extends React.Component {
       <div>
         <h1>APP</h1>
         <SearchBar onTermSubmit={this.onTermSubmit} />
+        <VideoDetail video={this.state.clickedVideo} />
         <VideoList
           onVideoClick={this.onVideoClick}
           videos={this.state.videos}
         />
-        <VideoDetail video={this.state.clickedVideo} />
       </div>
     );
   }
