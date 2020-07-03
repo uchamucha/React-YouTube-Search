@@ -2,7 +2,6 @@ import "./VideoItem.css";
 import React from "react";
 
 const VideoItem = (props) => {
-  console.log(props);
   return (
     <div
       onClick={() => {

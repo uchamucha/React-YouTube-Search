@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import youtube from "../api/youtube";
 import VideoList from "../components/VideoList";
+import VideoDetail from "./VideoDetail";
 const KEY = "AIzaSyDCK8UiqK-3eXB6krQhwrmEolljdLn4ti0";
 
 class App extends React.Component {
@@ -28,7 +29,7 @@ class App extends React.Component {
 
   //define function to update state with clicked video. To be sent as prop to VideoList component.
   onVideoClick = (video) => {
-    console.log("from app!", video);
+    this.setState({ clickedVideo: video });
   };
 
   render() {
@@ -40,6 +41,7 @@ class App extends React.Component {
           onVideoClick={this.onVideoClick}
           videos={this.state.videos}
         />
+        <VideoDetail video={this.state.clickedVideo} />
       </div>
     );
   }
