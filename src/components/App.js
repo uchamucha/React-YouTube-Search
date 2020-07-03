@@ -8,6 +8,7 @@ class App extends React.Component {
   //initialize state to store response
   state = {
     videos: [],
+    clickedVideo: null,
   };
 
   //define search function to be sent as prop into SearchBar component
@@ -25,12 +26,20 @@ class App extends React.Component {
     this.setState({ videos: response.data.items });
   };
 
+  //define function to update state with clicked video. To be sent as prop to VideoList component.
+  onVideoClick = (video) => {
+    console.log("from app!", video);
+  };
+
   render() {
     return (
       <div>
         <h1>APP</h1>
         <SearchBar onTermSubmit={this.onTermSubmit} />
-        <VideoList videos={this.state.videos} />
+        <VideoList
+          onVideoClick={this.onVideoClick}
+          videos={this.state.videos}
+        />
       </div>
     );
   }
